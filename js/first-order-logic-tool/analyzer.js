@@ -18,7 +18,7 @@ export class Semantic {
 		                return `NOT AN ELEMENT OF THE UNIVERSE`;
 
 		        case "predicate":
-				return `open sentence` // of arity ${this.arity}`;
+		    return `open sentence`; // of arity ${this.arity}`;
 
 			case "constant":
 			case "variable":
