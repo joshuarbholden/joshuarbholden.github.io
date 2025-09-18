@@ -129,7 +129,25 @@ class AnalyzeVisitor {
 		}
 	}
 
-	visitApplication(application) {
+    // OLD VERSION
+	// visitApplication(application) {
+	// 	this.setSemantic(
+	// 		application,
+	// 		application.identifier,
+	// 		new Semantic(this.expectTerm ? "function" : "predicate", application.arity)
+	// 	);
+
+	// 	let oldExpectTerm = this.expectTerm;
+	// 	this.expectTerm = true;
+
+	// 	try {
+	// 		application.args.forEach(arg => arg.accept(this));
+	// 	} finally {
+	// 		this.expectTerm = oldExpectTerm;
+	// 	}
+	// }
+
+    	visitApplication(application) {
 		this.setSemantic(
 			application,
 			application.identifier,
@@ -142,7 +160,7 @@ class AnalyzeVisitor {
 		try {
 			application.args.forEach(arg => arg.accept(this));
 		} finally {
-			this.expectTerm = oldExpectTerm;
+			this.expectTerm = false;
 		}
 	}
 
