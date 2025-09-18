@@ -15,7 +15,7 @@ export class Semantic {
 	toString() {
 		switch (this.type) {
 			case "function":
-		                return "error"
+		                return `error`;
 
 		        case "predicate":
 				return `${this.type} of arity ${this.arity}`;
