@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="author" content="Matteo Morena" />
+		{% if page.description != nil %}<meta name="description" content="{{ page.description | smartify }}" />{% endif %}
+		{% if page.keywords != nil %}<meta name="keywords" content="{{ page.keywords | smartify }}" />{% endif %}
+		<meta name="theme-color" content="#222" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<title>{{ page.title | smartify }}—Mamo.dev</title>
+
+		<base target="_blank" />
+
+		{% comment %}<link rel="icon" href="favicon.ico" />{% endcomment %}
+		<link rel="stylesheet" href="/css/main.css" />
+		{% for style in page.styles %}<link rel="stylesheet" href="{{ style }}" />{% endfor %}
+
+		{% for script in page.scripts %}<script src="{{ script }}" defer="defer"></script>{% endfor %}
+		{% for script in page.modules %}<script type="module" src="{{ script }}"></script>{% endfor %}
+	</head>
+
+	<body>
+		<header id="header">
+			<div id="header-top">
+				<span id="header-title">Matteo Morena</span>
+				<span id="header-subtitle" class="blinking-cursor">Software developer</span>
+			</div>
+
+			{% include navigation.html %}
+		</header>
+
+		<main>
+			{% if page.article %}
+				<article>
+					{{ content }}
+				</article>
+			{% else %}
+				{{ content }}
+			{% endif %}
+		</main>
+	</body>
+</html>
