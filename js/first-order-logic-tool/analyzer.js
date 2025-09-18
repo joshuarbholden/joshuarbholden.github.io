@@ -157,12 +157,12 @@ class AnalyzeVisitor {
 		);
 
 		let oldExpectTerm = this.expectTerm;
-	        this.expectTerm = false;
+	    this.expectTerm = true;
 
 		try {
 			application.args.forEach(arg => arg.accept(this));
 		} finally {
-			this.expectTerm = false;
+			this.expectTerm = true;
 		}
 	}
 
