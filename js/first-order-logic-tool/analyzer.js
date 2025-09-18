@@ -15,10 +15,10 @@ export class Semantic {
 	toString() {
 		switch (this.type) {
 			case "function":
-		                return `error`;
+		                return `NOT AN ELEMENT OF THE UNIVERSE`;
 
 		        case "predicate":
-				return `${this.type} of arity ${this.arity}`;
+				return `open sentence` // of arity ${this.arity}`;
 
 			case "constant":
 			case "variable":
@@ -132,24 +132,7 @@ class AnalyzeVisitor {
 	}
 
     // OLD VERSION
-	// visitApplication(application) {
-	// 	this.setSemantic(
-	// 		application,
-	// 		application.identifier,
-	// 		new Semantic(this.expectTerm ? "function" : "predicate", application.arity)
-	// 	);
-
-	// 	let oldExpectTerm = this.expectTerm;
-	// 	this.expectTerm = true;
-
-	// 	try {
-	// 		application.args.forEach(arg => arg.accept(this));
-	// 	} finally {
-	// 		this.expectTerm = oldExpectTerm;
-	// 	}
-	// }
-
-    	visitApplication(application) {
+	visitApplication(application) {
 		this.setSemantic(
 			application,
 			application.identifier,
@@ -157,14 +140,32 @@ class AnalyzeVisitor {
 		);
 
 		let oldExpectTerm = this.expectTerm;
-	    this.expectTerm = true;
+		this.expectTerm = true;
 
 		try {
 			application.args.forEach(arg => arg.accept(this));
 		} finally {
-			this.expectTerm = true;
+			this.expectTerm = oldExpectTerm;
 		}
 	}
+
+    // TRIED TO CHANGE THE WRONG THING
+    	// visitApplication(application) {
+	// 	this.setSemantic(
+	// 		application,
+	// 		application.identifier,
+	// 		new Semantic(this.expectTerm ? "function" : "predicate", application.arity)
+	// 	);
+
+	// 	let oldExpectTerm = this.expectTerm;
+	//     this.expectTerm = true;
+
+	// 	try {
+	// 		application.args.forEach(arg => arg.accept(this));
+	// 	} finally {
+	// 		this.expectTerm = true;
+	// 	}
+	// }
 
 	setSemantic(source, identifier, semantic) {
 		let oldSemantic = this.semantics.get(identifier);
