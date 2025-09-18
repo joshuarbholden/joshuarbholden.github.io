@@ -132,7 +132,43 @@ class AnalyzeVisitor {
 	}
 
     // OLD VERSION
-	visitApplication(application) {
+	// visitApplication(application) {
+	// 	this.setSemantic(
+	// 		application,
+	// 		application.identifier,
+	// 		new Semantic(this.expectTerm ? "function" : "predicate", application.arity)
+	// 	);
+
+	// 	let oldExpectTerm = this.expectTerm;
+	// 	this.expectTerm = true;
+
+	// 	try {
+	// 		application.args.forEach(arg => arg.accept(this));
+	// 	} finally {
+	// 		this.expectTerm = oldExpectTerm;
+	// 	}
+	// }
+
+            visitApplication(application) {
+	        if (this.expectTerm) {
+			throw new AnalysisError(
+			    `"${identifier}" is an open sentence, not an element of the universe of discourse`,
+
+				utils.createElement(
+					"span",
+					utils.createElement("var", identifier),
+					" is used both as a ",
+					oldSemantic,
+					" and a ",
+					semantic
+				),
+
+				source
+			);
+		}
+
+
+	
 		this.setSemantic(
 			application,
 			application.identifier,
@@ -149,24 +185,8 @@ class AnalyzeVisitor {
 		}
 	}
 
-    // TRIED TO CHANGE THE WRONG THING
-    	// visitApplication(application) {
-	// 	this.setSemantic(
-	// 		application,
-	// 		application.identifier,
-	// 		new Semantic(this.expectTerm ? "function" : "predicate", application.arity)
-	// 	);
 
-	// 	let oldExpectTerm = this.expectTerm;
-	//     this.expectTerm = true;
-
-	// 	try {
-	// 		application.args.forEach(arg => arg.accept(this));
-	// 	} finally {
-	// 		this.expectTerm = true;
-	// 	}
-	// }
-
+    
 	setSemantic(source, identifier, semantic) {
 		let oldSemantic = this.semantics.get(identifier);
 
