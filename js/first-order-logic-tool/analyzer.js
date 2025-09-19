@@ -132,40 +132,7 @@ class AnalyzeVisitor {
 	}
 
     // OLD VERSION
-	// visitApplication(application) {
-	// 	this.setSemantic(
-	// 		application,
-	// 		application.identifier,
-	// 		new Semantic(this.expectTerm ? "function" : "predicate", application.arity)
-	// 	);
-
-	// 	let oldExpectTerm = this.expectTerm;
-	// 	this.expectTerm = true;
-
-	// 	try {
-	// 		application.args.forEach(arg => arg.accept(this));
-	// 	} finally {
-	// 		this.expectTerm = oldExpectTerm;
-	// 	}
-	// }
-
-            visitApplication(application) {
-		    if (this.expectTerm) {
-			throw new AnalysisError(
-			    `"${identifier}" is an open sentence, not an element of the universe of discourse`,
-
-				utils.createElement(
-					"span",
-					utils.createElement("var", identifier),
-					" is an open sentence, not an element of the universe of discourse"
-				),
-
-				"test"
-			);
-		    };
-
-
-	
+	visitApplication(application) {
 		this.setSemantic(
 			application,
 			application.identifier,
@@ -181,7 +148,6 @@ class AnalyzeVisitor {
 			this.expectTerm = oldExpectTerm;
 		}
 	}
-
 
     
 	setSemantic(source, identifier, semantic) {
