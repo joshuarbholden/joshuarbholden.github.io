@@ -157,10 +157,10 @@ class AnalyzeVisitor {
 				utils.createElement(
 					"span",
 					utils.createElement("var", identifier),
-					" is an open sentences, not an element of the universe of discourse"
+					" is an open sentence, not an element of the universe of discourse"
 				),
 
-				application
+				"test"
 			);
 		    };
 
