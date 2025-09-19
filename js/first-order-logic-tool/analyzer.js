@@ -150,22 +150,19 @@ class AnalyzeVisitor {
 	// }
 
             visitApplication(application) {
-	        if (this.expectTerm) {
+		    if (this.expectTerm) {
 			throw new AnalysisError(
 			    `"${identifier}" is an open sentence, not an element of the universe of discourse`,
 
 				utils.createElement(
 					"span",
 					utils.createElement("var", identifier),
-					" is used both as a ",
-					oldSemantic,
-					" and a ",
-					semantic
+					" is an open sentences, not an element of the universe of discourse"
 				),
 
-				source
+				application
 			);
-		};
+		    };
 
 
 	
