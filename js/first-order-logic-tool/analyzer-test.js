@@ -17,10 +17,12 @@ export class Semantic {
 			case "function":
 		                return `NOT AN ELEMENT OF THE UNIVERSE`;
 
-		        case "predicate":
-		    return `open sentence`; // of arity ${this.arity}`;
+			case "predicate":
+				return `open sentence`; // of arity ${this.arity}`;
 
 			case "constant":
+			     return `constant or free variable`;
+			
 			case "variable":
 			case "sentence":
 				return this.type;
