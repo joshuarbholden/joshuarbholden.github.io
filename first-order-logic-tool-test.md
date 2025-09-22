@@ -93,8 +93,7 @@ A <dfn>first order language</dfn> is a language characterized by:
  * A set of <dfn>constant symbols</dfn>;
 
  * A set of <dfn>variable symbols</dfn>;
-
- * A set of <dfn>function symbols</dfn>, each with an associated arity;
+<!-- * A set of <dfn>function symbols</dfn>, each with an associated arity; -->
 
  * A set of <dfn>predicate symbols</dfn>, each with an associated arity;
 
@@ -107,16 +106,16 @@ A <dfn>first order language</dfn> is a language characterized by:
 
 ### Terms ###
 
-<dfn>Terms</dfn> are the basic building blocks needed to write first order formulas. They are defined inductively as
+<dfn>Terms</dfn> are the basic building blocks needed to write first order formulas. They are defined <!--inductively-->as
 follows:
 
  * Every variable is a term;
 
  * Every constant is a term;
 
- * <span class="nowrap"><var>f</var>(<var>t</var><sub>1</sub>, ..., <var>t</var><sub><var>n</var></sub>)</span> is a
+<!-- * <span class="nowrap"><var>f</var>(<var>t</var><sub>1</sub>, ..., <var>t</var><sub><var>n</var></sub>)</span> is a
    term if <var>t</var><sub>1</sub>, ..., <var>t</var><sub><var>n</var></sub> are terms and <var>f</var> is a function
-   of arity <var>n</var>.
+   of arity <var>n</var>. -->
 
 
 ### Formulas ###
